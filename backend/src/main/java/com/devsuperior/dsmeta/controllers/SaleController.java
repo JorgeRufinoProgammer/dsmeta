@@ -1,24 +1,33 @@
 package com.devsuperior.dsmeta.controllers;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.devsuperior.dsmeta.entities.Sale;
 import com.devsuperior.dsmeta.services.SaleService;
 
-@RestController
-@RequestMapping(value = "/sales")
+@RestController		//Informa que é um componente "Controlador"
+@RequestMapping(value = "/sales")		//O caminho para acessar o backend (http://localhost:8080/sales)
 public class SaleController {
 	
-	@Autowired
-	private SaleService service;
+	//Implementa a API
+	//Classe responsavel por disponibilizar os "endpoints" para o frontend acessar o backend
 	
-	@GetMapping	
-	public List<Sale> findSales(){
-		return service.findSales();
+	@Autowired
+	private SaleService service;		//Usa o SaleService que acessar o banco para poder pegar os dados
+	
+	//Recebe as datas como String e depois converte
+	
+	@GetMapping			//Obter os dados - disponibilizar as vendas para o frontend
+	public Page<Sale> findSales(
+			@RequestParam(value = "minDate", defaultValue = "") String minDate, //Se usuario nao preencher data, vai usar o valor default
+			@RequestParam(value = "maxDate", defaultValue = "") String maxDate,  
+			Pageable pageable){		 
+		return service.findSales(minDate,maxDate,pageable);
 	}
 }

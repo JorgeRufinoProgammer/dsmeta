@@ -9,13 +9,15 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 			
 							//As tags sao o mapeamento JPA com o bando de dados
-@Entity						//Gera uma tabela						
+@Entity						//Anotaçao para criar uma tabela com o nome da entidade/classe						
 @Table(name = "tb_sales")	//Altera o nome da tabela para que não seja criada com o nome da classe, no caso "Sale"
 public class Sale {
 	
+	//Informa quem é o id da tabela e que é autoincremental
 	@Id					
 	@GeneratedValue(strategy = GenerationType.IDENTITY)		//Autoincremento do Id
 	private Long id;
+	
 	private String sellerName;
 	private Integer visited;
 	private Integer deals;
