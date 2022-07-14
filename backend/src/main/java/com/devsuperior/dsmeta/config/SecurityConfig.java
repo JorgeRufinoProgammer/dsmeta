@@ -11,6 +11,8 @@ import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
+//PERMITE QUE NOSSO BACKEND SEJA ACESSADO POR OUTRO SERVIDOR
+
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig {
