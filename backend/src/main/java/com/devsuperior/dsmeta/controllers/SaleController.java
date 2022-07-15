@@ -21,7 +21,7 @@ public class SaleController {
 	//Classe responsavel por disponibilizar os "endpoints" para o frontend acessar o backend
 	
 	@Autowired
-	private SaleService service;		//Usa o SaleService que acessar o banco para poder pegar os dados
+	private SaleService service;		//Usa o SaleService que acessa o banco para poder pegar os dados
 	
 	@Autowired
 	private SmsService smsService;
